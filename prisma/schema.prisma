@@ -10,6 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model OneSubCategory {
   id         Int      @id @default(autoincrement())
   name       String
@@ -29,6 +30,7 @@ model TwoSubCategory {
   Product Product[]
   @@map("two_sub_categories")
 }
+
 
 model Product {
   id                  Int            @id @default(autoincrement())
@@ -66,6 +68,7 @@ model ProductOption {
   @@map("product_options")
 }
 
+
 model Color {
   id         Int      @id @default(autoincrement())
   name       String
@@ -81,7 +84,9 @@ model Color {
 model Size {
   id         Int      @id @default(autoincrement())
   name       String
-  price_add  Decimal
+
+  price_add  Decimal  @db.Decimal(10, 0)
+
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
 
@@ -93,7 +98,9 @@ model Size {
 model Composition {
   id         Int      @id @default(autoincrement())
   name       String
-  price_add  Decimal
+
+  price_add  Decimal  @db.Decimal(10, 0)
+
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
 
@@ -104,9 +111,12 @@ model Composition {
 
 model User {
   id            Int      @id @default(autoincrement())
+
+  username      String
   email         String   @unique
   password      String
-  username      String?
+
+
   address       String?
   phone_number  String?
   policy_agreed Boolean  @default(true)
@@ -119,26 +129,28 @@ model User {
 }
 
 model UserHeart {
-  id         Int      @id @default(autoincrement())
-  heart      Boolean  @default(false)
+
+  id         Int     @id @default(autoincrement())
   user_id    Int
   product_id Int
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
-  users      User     @relation(fields: [user_id], references: [id])
-  products   Product  @relation(fields: [product_id], references: [id])
+  heart      Boolean @default(false)
 
+  users    User    @relation(fields: [user_id], references: [id])
+  products Product @relation(fields: [product_id], references: [id])
 
-  @@map("user_heart")
+  @@map("user_hearts")
 }
 
 model UserCart {
-  id             Int         @id @default(autoincrement())
+  id             Int @id @default(autoincrement())
+
   user_id        Int
   product_id     Int
   color_id       Int
   size_id        Int
   composition_id Int
+
+  quantity       Int
   created_at     DateTime    @default(now())
   updated_at     DateTime    @default(now())
   users          User        @relation(fields: [user_id], references: [id])
@@ -146,6 +158,7 @@ model UserCart {
   colors         Color       @relation(fields: [color_id], references: [id])
   sizes          Size        @relation(fields: [size_id], references: [id])
   compositions   Composition @relation(fields: [composition_id], references: [id])
+
 
   @@map("user_carts")
 }
