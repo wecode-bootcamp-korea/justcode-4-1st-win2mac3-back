@@ -9,3 +9,144 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model ProductOption {
+  id             Int      @id @default(autoincrement())
+  color_id       Int
+  size_id        Int
+  composition_id Int
+  Product_id     Int
+  created_at     DateTime @default(now())
+  updated_at     DateTime @default(now())
+
+  products     Product     @relation(fields: [Product_id], references: [id])
+  colors       Color       @relation(fields: [color_id], references: [id])
+  sizes        Size        @relation(fields: [size_id], references: [id])
+  compositions Composition @relation(fields: [composition_id], references: [id])
+
+  @@map("product_options")
+}
+
+model Product {
+  id                  Int      @id @default(autoincrement())
+  name                String   @unique
+  price_before        Decimal  @db.Decimal(10, 0)
+  price_after         Decimal  @db.Decimal(10, 0)
+  image_url           String
+  one_sub_category_id Int
+  two_sub_category_id Int
+  created_at          DateTime @default(now())
+  updated_at          DateTime @default(now())
+  sell_amount         Int
+
+  one_sub_categories OneSubCategory @relation(fields: [one_sub_category_id], references: [id])
+  two_sub_categories TwoSubCategory @relation(fields: [two_sub_category_id], references: [id])
+
+  ProductOption ProductOption[]
+  UserHeart     UserHeart[]
+  UserCart      UserCart[]
+  @@map("products")
+}
+
+model OneSubCategory {
+  id         Int      @id @default(autoincrement())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  Product Product[]
+  @@map("one_sub_categories")
+}
+
+model TwoSubCategory {
+  id         Int      @id @default(autoincrement())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  Product Product[]
+  @@map("two_sub_categories")
+}
+
+model Color {
+  id         Int      @id @default(autoincrement())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+
+  ProductOption ProductOption[]
+  UserCart      UserCart[]
+  @@map("colors")
+}
+
+model Size {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price_add  Decimal  @db.Decimal(10, 0)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  ProductOption ProductOption[]
+  UserCart      UserCart[]
+  @@map("sizes")
+}
+
+model Composition {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price_add  Decimal  @db.Decimal(10, 0)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  ProductOption ProductOption[]
+  UserCart      UserCart[]
+  @@map("compositions")
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  username      String
+  email         String   @unique
+  password      String
+  address       String?
+  phone_number  String?
+  policy_agreed Boolean  @default(true)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @default(now())
+
+  UserHeart UserHeart[]
+  UserCart  UserCart[]
+  @@map("users")
+}
+
+model UserHeart {
+  id         Int     @id @default(autoincrement())
+  user_id    Int
+  product_id Int
+  heart      Boolean @default(false)
+
+  users    User    @relation(fields: [user_id], references: [id])
+  products Product @relation(fields: [product_id], references: [id])
+
+  @@map("user_hearts")
+}
+
+model UserCart {
+  id             Int @id @default(autoincrement())
+  user_id        Int
+  product_id     Int
+  color_id       Int
+  size_id        Int
+  composition_id Int
+  quantity       Int
+
+
+  colors       Color       @relation(fields: [color_id], references: [id])
+  sizes        Size        @relation(fields: [size_id], references: [id])
+  compositions Composition @relation(fields: [composition_id], references: [id])
+  products     Product     @relation(fields: [product_id], references: [id])
+  users        User        @relation(fields: [user_id], references: [id])
+
+  @@map("user_carts")
+}
