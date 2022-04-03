@@ -1,3 +1,7 @@
 const productDao = require("../models/productDao");
 
-module.exports = {};
+const arrangeNewItems = async () => {
+    return await productDao.arrangeNewItems();
+}
+
+module.exports = {arrangeNewItems};
