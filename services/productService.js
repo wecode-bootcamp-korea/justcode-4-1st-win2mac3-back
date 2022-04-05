@@ -1,3 +1,14 @@
 const productDao = require("../models/productDao");
 
-module.exports = {};
+
+const getProductbestsell = async (id) => {
+    return await productDao.getProductbestsell(id)
+}
+
+
+const getallbestsell = async() => {
+    return await productDao.getallbestsell()
+}
+
+
+module.exports = { getProductbestsell, getallbestsell };
