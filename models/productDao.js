@@ -50,7 +50,7 @@ const getdetailSizes = async () => {
 
 const getdetailCompositions = async () => {
     return await prisma.$queryRaw`
-    SELECT id, name, value 
+    SELECT id, name, value, price_add
     FROM compositions;
     `
 }
