@@ -11,9 +11,9 @@ router.get('/allbestsell', productController.allbestsell)                    // 
 
 
 // router.get('/detail', productController.productsDetail)
-router.get('/detail/colors', productController.detailColors)
-router.get('/detail/sizes', productController.detailSizes)
-router.get('/detail/compositions', productController.detailCompositions)
+router.get('/detail/colors', productController.detailColors)                    // detail colors 선택 옵션
+router.get('/detail/sizes', productController.detailSizes)                      // detail sizes 선택 옵션
+router.get('/detail/compositions', productController.detailCompositions)        // detail compositions 선택 옵션
 
 
 module.exports = router

@@ -36,32 +36,24 @@ const getallbestsell = async () => {
 
 const getdetailColors = async () => {
     return await prisma.$queryRaw`
-    SELECT name 
+    SELECT id, name, value 
     FROM colors;
     `
 }
 
-
-
-
 const getdetailSizes = async () => {
     return await prisma.$queryRaw`
-    SELECT name 
+    SELECT id, name, value 
     FROM sizes;
     `
 }
 
-
-
-
 const getdetailCompositions = async () => {
     return await prisma.$queryRaw`
-    SELECT name, price_add 
+    SELECT id, name, value 
     FROM compositions;
     `
 }
-
-
 
 
 module.exports = { getonesubBestsell, gettwosubBestsell, getallbestsell, getdetailColors, getdetailSizes, getdetailCompositions };

@@ -63,8 +63,6 @@ const detailSizes = async (req, res) => {
     }
 }
 
-
-
 const detailCompositions = async (req, res) => {
     try {
         const detailCompositions = await productService.getdetailCompositions()
@@ -82,4 +80,4 @@ const detailCompositions = async (req, res) => {
 
 
 
-module.exports = { onesubBestsell, twosubBestsell, allbestsell , detailColors, detailSizes, detailCompositions};
+module.exports = { onesubBestsell, twosubBestsell, allbestsell, detailColors, detailSizes, detailCompositions };
