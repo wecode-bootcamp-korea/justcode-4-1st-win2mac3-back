@@ -1,8 +1,13 @@
 const productDao = require("../models/productDao");
 
 
-const getProductbestsell = async (id) => {
-    return await productDao.getProductbestsell(id)
+const getonesubBestsell = async (id) => {
+    return await productDao.getonesubBestsell(id)
+}
+
+
+const gettwosubBestsell = async (id) => {
+    return await productDao.gettwosubBestsell(id)
 }
 
 
@@ -11,4 +16,20 @@ const getallbestsell = async() => {
 }
 
 
-module.exports = { getProductbestsell, getallbestsell };
+
+// ==
+
+
+const getdetailColors = async() => {
+    return await productDao.getdetailColors()
+}
+
+const getdetailSizes = async() => {
+    return await productDao.getdetailSizes()
+}
+
+const getdetailCompositions = async() => {
+    return await productDao.getdetailCompositions()
+}
+
+module.exports = { getonesubBestsell, gettwosubBestsell, getallbestsell, getdetailColors, getdetailSizes, getdetailCompositions };

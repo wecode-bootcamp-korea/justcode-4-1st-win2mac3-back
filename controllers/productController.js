@@ -1,11 +1,22 @@
 const productService = require("../services/productService");
 
 
-const bestsell = async (req, res) => {
+const onesubBestsell = async (req, res) => {
     try {
         const id = req.params.id;
-        const bestsell = await productService.getProductbestsell(id)
-        return res.status(200).json({ bestsell })
+        const onesubBestsell = await productService.getonesubBestsell(id)
+        return res.status(200).json({ onesubBestsell })
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
+
+const twosubBestsell = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const twosubBestsell = await productService.gettwosubBestsell(id)
+        return res.status(200).json({ twosubBestsell })
     } catch (err) {
         console.log(err)
         return res.status(err.status || 500).json({ message: err.message })
@@ -23,5 +34,52 @@ const allbestsell = async (req, res) => {
     }
 }
 
+// ==
 
-module.exports = { bestsell, allbestsell };
+
+
+
+
+
+
+
+const detailColors = async (req, res) => {
+    try {
+        const detailColors = await productService.getdetailColors()
+        return res.status(200).json({ detailColors })
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
+
+const detailSizes = async (req, res) => {
+    try {
+        const detailSizes = await productService.getdetailSizes()
+        return res.status(200).json({ detailSizes })
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
+
+
+
+const detailCompositions = async (req, res) => {
+    try {
+        const detailCompositions = await productService.getdetailCompositions()
+        return res.status(200).json({ detailCompositions })
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
+
+
+
+
+
+
+
+
+module.exports = { onesubBestsell, twosubBestsell, allbestsell , detailColors, detailSizes, detailCompositions};
