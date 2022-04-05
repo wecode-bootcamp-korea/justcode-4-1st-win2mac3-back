@@ -43,7 +43,7 @@ const getdetailColors = async () => {
 
 const getdetailSizes = async () => {
     return await prisma.$queryRaw`
-    SELECT id, name, value 
+    SELECT id, name, value, price_add
     FROM sizes;
     `
 }
