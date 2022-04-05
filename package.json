@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "win2mac3-wecoview-back",
   "version": "1.0.0",
@@ -21,3 +22,28 @@
     "express": "^4.17.3"
   }
 }
+=======
+{
+  "name": "win2mac3-wecoview-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "postinstall": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15",
+    "prisma": "^3.11.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.11.1",
+    "express": "^4.17.3"
+  }
+}
+>>>>>>> 74d16cddab7a4bd96d975c3cb79ec766dfee4432
