@@ -3,6 +3,33 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 
+// == List ==
+
+
+const getOnesublist = async (id) => {
+    return await prisma.$queryRaw`
+    SELECT name, image_url, price_after
+    FROM products 
+    WHERE one_sub_category_id = ${id};
+    `
+}
+
+const getTwosublist = async (id) => {
+    return await prisma.$queryRaw`
+    SELECT name, image_url, price_after
+    FROM products 
+    WHERE two_sub_category_id = ${id};
+    `
+}
+
+const getAlllist = async () => {
+    return await prisma.$queryRaw`
+    SELECT name, image_url, price_after
+    FROM products;
+    `
+}
+
+
 // == Best ==
 
 
@@ -32,10 +59,9 @@ const getallbestsell = async () => {
     `
 }
 
-
 // == Detail == 
 
-const getDetail = async () => {
+const getDetail = async (id) => {
     return await prisma.$queryRaw`
     SELECT
     p.id 
@@ -54,11 +80,13 @@ ON
 inner JOIN  
     two_sub_categories t
 ON
-    p.two_sub_category_id=t.id;
+    p.two_sub_category_id=t.id
+WHERE p.id =${id};
     `
 }
 
 const getdetailColors = async () => {
+    console.log('3')
     return await prisma.$queryRaw`
     SELECT id, name, value 
     FROM colors;
@@ -79,5 +107,15 @@ const getdetailCompositions = async () => {
     `
 }
 
-
-module.exports = { getonesubBestsell, gettwosubBestsell, getallbestsell, getdetailColors, getdetailSizes, getdetailCompositions, getDetail };
+module.exports = {
+    getAlllist,
+    getOnesublist,
+    getTwosublist,
+    getonesubBestsell,
+    gettwosubBestsell,
+    getallbestsell,
+    getdetailColors,
+    getdetailSizes,
+    getdetailCompositions,
+    getDetail
+};

@@ -1,5 +1,19 @@
 const productDao = require("../models/productDao");
 
+// == List ==
+
+const getOnesublist = async (id) => {
+    return await productDao.getOnesublist(id)
+}
+
+const getTwosublist = async (id) => {
+    return await productDao.getTwosublist(id)
+}
+
+const getAlllist = async () => {
+    return await productDao.getAlllist()
+}
+
 
 // == Best ==
 
@@ -20,11 +34,12 @@ const getallbestsell = async () => {
 
 // == Detail == 
 
-const getDetail = async () => {
-    return await productDao.getDetail()
+const getDetail = async (id) => {
+    return await productDao.getDetail(id)
 }
 
 const getdetailColors = async () => {
+    console.log('2')
     return await productDao.getdetailColors()
 }
 
@@ -36,4 +51,15 @@ const getdetailCompositions = async () => {
     return await productDao.getdetailCompositions()
 }
 
-module.exports = { getonesubBestsell, gettwosubBestsell, getallbestsell, getdetailColors, getdetailSizes, getdetailCompositions, getDetail };
+module.exports = {
+    getAlllist,
+    getOnesublist,
+    getTwosublist,
+    getonesubBestsell,
+    gettwosubBestsell,
+    getallbestsell,
+    getdetailColors,
+    getdetailSizes,
+    getdetailCompositions,
+    getDetail
+};

@@ -33,13 +33,8 @@ model TwoSubCategory {
 model Product {
   id                  Int            @id @default(autoincrement())
   name                String
-<<<<<<< HEAD
-  price_before        Decimal       @db.Decimal(10,0)
-  price_after         Decimal       @db.Decimal(10,0)
-=======
   price_before        Decimal        @db.Decimal(10, 0)
   price_after         Decimal        @db.Decimal(10, 0)
->>>>>>> origin/develop
   image_url           String
   one_sub_category_id Int
   two_sub_category_id Int
