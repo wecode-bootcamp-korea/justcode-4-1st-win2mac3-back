@@ -1,3 +1,3 @@
-const productService = require("../models/productService");
-
+const productService = require("../services/productService");
+const jwt = require('jsonwebtoken')
 module.exports = {};
