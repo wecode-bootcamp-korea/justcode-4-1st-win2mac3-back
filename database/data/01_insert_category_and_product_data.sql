@@ -1,4 +1,5 @@
 
+
 INSERT INTO one_sub_categories (id, name) VALUES (1, '침구');
 INSERT INTO two_sub_categories (id, name) VALUES (1, '차렵이불');
 
@@ -38,3 +39,4 @@ VALUES
 (2,"차렵이불", 0),
 (3,"이불세트", 12900),
 (4,"패드세트", 67000);
+

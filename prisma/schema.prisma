@@ -1,6 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
+//20220331
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,7 +9,6 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
 
 model OneSubCategory {
   id         Int      @id @default(autoincrement())
@@ -31,12 +30,16 @@ model TwoSubCategory {
   @@map("two_sub_categories")
 }
 
-
 model Product {
   id                  Int            @id @default(autoincrement())
   name                String
+<<<<<<< HEAD
   price_before        Decimal       @db.Decimal(10,0)
   price_after         Decimal       @db.Decimal(10,0)
+=======
+  price_before        Decimal        @db.Decimal(10, 0)
+  price_after         Decimal        @db.Decimal(10, 0)
+>>>>>>> origin/develop
   image_url           String
   one_sub_category_id Int
   two_sub_category_id Int
@@ -68,10 +71,10 @@ model ProductOption {
   @@map("product_options")
 }
 
-
 model Color {
   id         Int      @id @default(autoincrement())
   name       String
+  value      String
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
 
@@ -82,10 +85,10 @@ model Color {
 }
 
 model Size {
-  id         Int      @id @default(autoincrement())
-  name       String
-
-  price_add  Decimal  @db.Decimal(10, 0)
+  id        Int     @id @default(autoincrement())
+  name      String
+  value     String
+  price_add Decimal @db.Decimal(10, 0)
 
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
@@ -96,10 +99,10 @@ model Size {
 }
 
 model Composition {
-  id         Int      @id @default(autoincrement())
-  name       String
-
-  price_add  Decimal  @db.Decimal(10, 0)
+  id        Int     @id @default(autoincrement())
+  name      String
+  value     String
+  price_add Decimal @db.Decimal(10, 0)
 
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
@@ -110,13 +113,11 @@ model Composition {
 }
 
 model User {
-  id            Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
   username      String
   email         String   @unique
   password      String
-
-
   address       String?
   phone_number  String?
   policy_agreed Boolean  @default(true)
@@ -142,7 +143,7 @@ model UserHeart {
 }
 
 model UserCart {
-  id             Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
   user_id        Int
   product_id     Int
@@ -150,14 +151,14 @@ model UserCart {
   size_id        Int
   composition_id Int
 
-  quantity       Int
-  created_at     DateTime    @default(now())
-  updated_at     DateTime    @default(now())
-  users          User        @relation(fields: [user_id], references: [id])
-  products       Product     @relation(fields: [product_id], references: [id])
-  colors         Color       @relation(fields: [color_id], references: [id])
-  sizes          Size        @relation(fields: [size_id], references: [id])
-  compositions   Composition @relation(fields: [composition_id], references: [id])
+  quantity     Int
+  created_at   DateTime    @default(now())
+  updated_at   DateTime    @default(now())
+  users        User        @relation(fields: [user_id], references: [id])
+  products     Product     @relation(fields: [product_id], references: [id])
+  colors       Color       @relation(fields: [color_id], references: [id])
+  sizes        Size        @relation(fields: [size_id], references: [id])
+  compositions Composition @relation(fields: [composition_id], references: [id])
 
 
   @@map("user_carts")

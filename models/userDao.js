@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -38,3 +39,10 @@ const createUser = async (username,email,encryptedPW) => {
 }
 
 module.exports = {getUserByEmail,getUserPassword,getUserByUsername,createUser,getUsernamePassword,getUserAll};
+=======
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
+
+module.exports = {};
+>>>>>>> origin/develop
