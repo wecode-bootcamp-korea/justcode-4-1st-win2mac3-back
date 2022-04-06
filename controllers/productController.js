@@ -1,3 +1,4 @@
+
 const productService = require("../services/productService");
 
 // == Best ==
@@ -86,3 +87,4 @@ const detailCompositions = async (req, res) => {
 
 
 module.exports = { onesubBestsell, twosubBestsell, allbestsell, detailColors, detailSizes, detailCompositions, detail };
+
