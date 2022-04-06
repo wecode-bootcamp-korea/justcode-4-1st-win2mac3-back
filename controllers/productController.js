@@ -1,5 +1,6 @@
 const productService = require("../services/productService");
 
+// == Best ==
 
 const onesubBestsell = async (req, res) => {
     try {
@@ -34,13 +35,17 @@ const allbestsell = async (req, res) => {
     }
 }
 
-// ==
+// == Detail == 
 
-
-
-
-
-
+const detail = async (req, res) => {
+    try {
+        const productsDetail = await productService.getDetail()
+        return res.status(200).json({ productsDetail })
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
 
 
 const detailColors = async (req, res) => {
@@ -80,4 +85,4 @@ const detailCompositions = async (req, res) => {
 
 
 
-module.exports = { onesubBestsell, twosubBestsell, allbestsell, detailColors, detailSizes, detailCompositions };
+module.exports = { onesubBestsell, twosubBestsell, allbestsell, detailColors, detailSizes, detailCompositions, detail };
