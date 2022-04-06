@@ -33,8 +33,8 @@ model TwoSubCategory {
 model Product {
   id                  Int            @id @default(autoincrement())
   name                String
-  price_before        Decimal
-  price_after         Decimal
+  price_before        Decimal        @db.Decimal(10, 0)
+  price_after         Decimal        @db.Decimal(10, 0)
   image_url           String
   one_sub_category_id Int
   two_sub_category_id Int
@@ -69,6 +69,7 @@ model ProductOption {
 model Color {
   id         Int      @id @default(autoincrement())
   name       String
+  value      String
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
 
@@ -79,9 +80,9 @@ model Color {
 }
 
 model Size {
-  id   Int    @id @default(autoincrement())
-  name String
-
+  id        Int     @id @default(autoincrement())
+  name      String
+  value     String
   price_add Decimal @db.Decimal(10, 0)
 
   created_at DateTime @default(now())
@@ -93,9 +94,9 @@ model Size {
 }
 
 model Composition {
-  id   Int    @id @default(autoincrement())
-  name String
-
+  id        Int     @id @default(autoincrement())
+  name      String
+  value     String
   price_add Decimal @db.Decimal(10, 0)
 
   created_at DateTime @default(now())
