@@ -1,6 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-//20220331
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -33,8 +33,8 @@ model TwoSubCategory {
 model Product {
   id                  Int            @id @default(autoincrement())
   name                String
-  price_before        Decimal
-  price_after         Decimal
+  price_before        Decimal        @db.Decimal(10, 0)
+  price_after         Decimal        @db.Decimal(10, 0)
   image_url           String
   one_sub_category_id Int
   two_sub_category_id Int
