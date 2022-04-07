@@ -56,20 +56,16 @@ const createNewUer = async(req,res,next)=>{
     }
 };
 
-const verifyToken = async(req,res,next) =>{
-    try{
-        const clientToken = req.cookies.user;
-        const decoded = jwt.verify(clientToken,YOUR_SECRET_KET);
+const verifyToken = async (req,res,next) =>{
+    try {
+        const clientToken = req.headers.authorization;
+        const decoded = jwt.verify(clientToken, YOUR_SECRET_KET);
+        console.log(decoded.userId)
 
-        if(decoded){
-            res.locals.userId =decoded.user_Id;
-            next();
-        }else{
-            res.status(401).json({error:'unauthorzies'});
-
+        if(decoded.userId) {
+            res.json({user_id: decoded.userId});
         }
-
-    }catch(err){
+    } catch(err) {
         res.status(401).json({error:'token expired'});
     }
 };
@@ -86,7 +82,6 @@ const getAll = async (req,res,next)=>{
 };
 
 const signUp = async (req, res) => {
-    console.log(req.body)
     try {
         const  { username,email,password } = req.body;
 
@@ -104,11 +99,9 @@ const signUp = async (req, res) => {
 const signIn = async(req,res)=> {
     try{
         const {email, password} = req.body;
-        console.log(req)
         
         const token = await userService.signIn(email, password)
-        console.log(token)
-        return res.status(200).json({message:'LOGIN_SUCCESS', jwt: token}).cookie("user", token)
+        return res.status(200).json({message:'LOGIN_SUCCESS', jwt: token})
     }   catch(err){
         console.log(err)
         return res.status(err.statusCode||500).json({message:err.message})
