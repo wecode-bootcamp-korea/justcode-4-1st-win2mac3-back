@@ -60,7 +60,6 @@ const verifyToken = async (req,res,next) =>{
     try {
         const clientToken = req.headers.authorization;
         const decoded = jwt.verify(clientToken, YOUR_SECRET_KET);
-        console.log(decoded.userId)
 
         if(decoded.userId) {
             res.json({user_id: decoded.userId});

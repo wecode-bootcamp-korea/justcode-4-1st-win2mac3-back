@@ -13,7 +13,6 @@ const postCartwrite = async (user_id, color_id, composition_id, product_id, quan
 }
 
 const getCartread = async (id) => {
-    console.log(3)
     return await prisma.$queryRaw`
     SELECT u.id, u.price, u.quantity, p.image_url,
     p.name AS product_name,
@@ -38,9 +37,20 @@ const getCartdelete = async (id) => {
     delete from user_carts where id=${id};`
 }
 
+const quantityminus = async (id, quantity) => {
+    return await prisma.$queryRaw`
+    UPDATE user_carts SET quantity = ${quantity} WHERE id=${id};`
+}
+
+const quantityplus = async (id, quantity) => {
+    return await prisma.$queryRaw`
+    UPDATE user_carts SET quantity = ${quantity} WHERE id=${id};`
+}
 
 module.exports = {
     postCartwrite,
     getCartread,
-    getCartdelete
+    getCartdelete,
+    quantityminus,
+    quantityplus
 };
