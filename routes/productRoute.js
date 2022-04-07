@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-const express = require("express");
-const router = express.Router();
-
-const productController = require("../controllers/productController"); 
-
-
-
-
-
-
-module.exports = router;
-=======
 const express = require("express");
 const router = express.Router();
 
@@ -30,4 +17,4 @@ router.get('/detail/compositions', productController.detailCompositions)        
 
 
 module.exports = router
->>>>>>> origin/develop
+
