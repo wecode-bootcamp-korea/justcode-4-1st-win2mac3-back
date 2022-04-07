@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -26,9 +25,9 @@ const getUsernamePassword = async (username) => {
 		SELECT password FROM users WHERE username = ${username};
 	`
 } 
-const getUserAll = async (username) => {
+const getUserAll = async (email) => {
 	return await prisma.$queryRaw`
-		SELECT * FROM users WHERE username = ${username};
+		SELECT * FROM users WHERE email = ${email};
 	`
 } 
 
@@ -39,10 +38,3 @@ const createUser = async (username,email,encryptedPW) => {
 }
 
 module.exports = {getUserByEmail,getUserPassword,getUserByUsername,createUser,getUsernamePassword,getUserAll};
-=======
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
-
-module.exports = {};
->>>>>>> origin/develop

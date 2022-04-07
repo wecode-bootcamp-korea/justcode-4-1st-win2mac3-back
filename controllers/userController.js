@@ -1,4 +1,3 @@
-
 const req = require('express/lib/request');
 const userService = require('../services/userService') 
 require('dotenv').config(); 
@@ -8,14 +7,12 @@ const { getUserAll, createUser } = require('../models/userDao');
 
 
 const valideteForm = async(req,res,next)=>{
-    const {username,email,password} =req.body;
+    const {email,password} =req.body;
 
-    if(!username || !email || !password){
+    if(!email || !password){
         res.status(400).json({message:"KEY_ERROR"});
         return;
     }
-
- 
     next();
 
 }
@@ -88,11 +85,8 @@ const getAll = async (req,res,next)=>{
     }
 };
 
-
-
-
 const signUp = async (req, res) => {
-
+    console.log(req.body)
     try {
         const  { username,email,password } = req.body;
 
@@ -109,18 +103,17 @@ const signUp = async (req, res) => {
 
 const signIn = async(req,res)=> {
     try{
-        const {username,email,password} = req.body;
+        const {email, password} = req.body;
+        console.log(req)
         
-        const token = await userService.signIn(username,email,password)
+        const token = await userService.signIn(email, password)
         console.log(token)
-        return res.status(200).json({message:'LOGIN_SUCCESS',jwt:token})
-
+        return res.status(200).json({message:'LOGIN_SUCCESS', jwt: token}).cookie("user", token)
     }   catch(err){
         console.log(err)
         return res.status(err.statusCode||500).json({message:err.message})
- }   
+    }   
 };
-
 
 module.exports = {
     
