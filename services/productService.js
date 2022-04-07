@@ -39,7 +39,6 @@ const getDetail = async (id) => {
 }
 
 const getdetailColors = async () => {
-    console.log('2')
     return await productDao.getdetailColors()
 }
 

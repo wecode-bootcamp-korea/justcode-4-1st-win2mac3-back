@@ -86,7 +86,6 @@ const detail = async (req, res) => {
 
 
 const detailColors = async (req, res) => {
-    console.log('1')
     try {
         const detailColors = await productService.getdetailColors()
         return res.status(200).json(detailColors)
