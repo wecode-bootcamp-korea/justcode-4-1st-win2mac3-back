@@ -145,15 +145,15 @@ model UserCart {
   color_id       Int
   size_id        Int
   composition_id Int
-
-  quantity     Int
-  created_at   DateTime    @default(now())
-  updated_at   DateTime    @default(now())
-  users        User        @relation(fields: [user_id], references: [id])
-  products     Product     @relation(fields: [product_id], references: [id])
-  colors       Color       @relation(fields: [color_id], references: [id])
-  sizes        Size        @relation(fields: [size_id], references: [id])
-  compositions Composition @relation(fields: [composition_id], references: [id])
+  price          Decimal     @db.Decimal(10, 0)
+  quantity       Int
+  created_at     DateTime    @default(now())
+  updated_at     DateTime    @default(now())
+  users          User        @relation(fields: [user_id], references: [id])
+  products       Product     @relation(fields: [product_id], references: [id])
+  colors         Color       @relation(fields: [color_id], references: [id])
+  sizes          Size        @relation(fields: [size_id], references: [id])
+  compositions   Composition @relation(fields: [composition_id], references: [id])
 
 
   @@map("user_carts")
