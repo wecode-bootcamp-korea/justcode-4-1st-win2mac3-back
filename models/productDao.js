@@ -24,7 +24,7 @@ const getTwosublist = async (id) => {
 
 const getAlllist = async () => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after 
     FROM products;
     `
 }
