@@ -1,4 +1,3 @@
-
 INSERT INTO one_sub_categories (id, name) VALUES (1, '침구');
 INSERT INTO two_sub_categories (id, name) VALUES (1, '차렵이불');
 
@@ -14,27 +13,26 @@ VALUES
 (7,"소프트니스 모달100% 무봉제 차렵이불[옐로우]", 120000, 84900, "image7", 1, 1, 0),
 (8,"컴포트 올리브리프 차렵이불", 89000, 59900, "image8", 1, 1, 0);
 
-INSERT INTO colors (id,name)
+INSERT INTO colors (id, name, value)
 VALUES 
-(1,"선택안함"),
-(2,"옐로우"),
-(3,"화이트"),
-(4,"블루"),
-(5,"핑크"),
-(6,"바이올렛")
+(1,"선택안함","no option"),
+(2,"옐로우","yellow"),
+(3,"화이트","white"),
+(4,"블루","blue"),
+(5,"핑크","pink"),
+(6,"바이올렛","violet")
 ;
 
-INSERT INTO sizes (id,name,price_add)
+INSERT INTO sizes (id,name,value,price_add)
 VALUES
-(1,"선택안함",0),
-(2,"SS",0),
-(3,"Q",25000)
+(1,"선택안함","no option",0),
+(2,"SS","supersingle",0),
+(3,"Q","queen",25000)
 ;
 
-
-INSERT INTO compositions (id, name, price_add)
+INSERT INTO compositions (id, name, value, price_add)
 VALUES
-(1,"선택안함",0),
-(2,"차렵이불", 0),
-(3,"이불세트", 12900),
-(4,"패드세트", 67000);
+(1,"선택안함","no option",0),
+(2,"차렵이불","set1",0),
+(3,"이불세트","set2",12900),
+(4,"패드세트","set3",67000);
