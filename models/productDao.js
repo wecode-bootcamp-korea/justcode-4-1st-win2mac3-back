@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 const { PrismaClient } = require("@prisma/client");
+
 const prisma = new PrismaClient();
 
 const arrangeNewItems = async () => {
@@ -14,19 +14,13 @@ const arrangeNewItems = async () => {
     `
 }
 
-module.exports = {arrangeNewItems};
-=======
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
-
 
 // == List ==
 
 
 const getOnesublist = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE one_sub_category_id = ${id};
     `
@@ -34,7 +28,7 @@ const getOnesublist = async (id) => {
 
 const getTwosublist = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE two_sub_category_id = ${id};
     `
@@ -42,7 +36,7 @@ const getTwosublist = async (id) => {
 
 const getAlllist = async () => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after 
     FROM products;
     `
 }
@@ -53,7 +47,7 @@ const getAlllist = async () => {
 
 const getonesubBestsell = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE one_sub_category_id = ${id}
     ORDER BY sell_amount DESC;
@@ -62,7 +56,7 @@ const getonesubBestsell = async (id) => {
 
 const gettwosubBestsell = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE two_sub_category_id = ${id}
     ORDER BY sell_amount DESC;
@@ -71,7 +65,7 @@ const gettwosubBestsell = async (id) => {
 
 const getallbestsell = async () => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after, price_before 
+    SELECT id, name, image_url, price_after, price_before 
     FROM products 
     ORDER BY sell_amount desc;
     `
@@ -134,6 +128,6 @@ module.exports = {
     getdetailColors,
     getdetailSizes,
     getdetailCompositions,
-    getDetail
+    getDetail,
+  arrangeNewItems
 };
->>>>>>> 748da157c873548f60bc950e4746309a90935619
