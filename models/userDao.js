@@ -25,9 +25,9 @@ const getUsernamePassword = async (username) => {
 		SELECT password FROM users WHERE username = ${username};
 	`
 } 
-const getUserAll = async (username) => {
+const getUserAll = async (email) => {
 	return await prisma.$queryRaw`
-		SELECT * FROM users WHERE username = ${username};
+		SELECT * FROM users WHERE email = ${email};
 	`
 } 
 
