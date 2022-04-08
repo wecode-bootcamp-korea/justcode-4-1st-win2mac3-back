@@ -3,7 +3,6 @@ const productService = require("../services/productService.js")
 const arrangeNewItems = async(req, res) => {
     try {
         const newItems = await productService.arrangeNewItems()
-        // res.status(200).json({ message: "good" })
         res.status(200).json(newItems)
     } catch (err) {
         console.log(err)
