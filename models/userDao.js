@@ -9,6 +9,7 @@ const getUserByEmail = async (email) => {
 }	
 
 const getUserByUsername= async (username) => {
+
 	return await prisma.$queryRaw`
 		SELECT id FROM users WHERE username = ${username};
 	`

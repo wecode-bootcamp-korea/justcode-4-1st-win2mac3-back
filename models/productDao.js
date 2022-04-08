@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 
 const getOnesublist = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE one_sub_category_id = ${id};
     `
@@ -16,7 +16,7 @@ const getOnesublist = async (id) => {
 
 const getTwosublist = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE two_sub_category_id = ${id};
     `
@@ -24,7 +24,7 @@ const getTwosublist = async (id) => {
 
 const getAlllist = async () => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after, price_before
     FROM products;
     `
 }
@@ -53,9 +53,23 @@ const gettwosubBestsell = async (id) => {
 
 const getallbestsell = async () => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after, price_before 
+    SELECT id, name, image_url, price_after, price_before 
     FROM products 
     ORDER BY sell_amount desc;
+    `
+}
+
+const getallnewsell = async () => {
+    return await prisma.$queryRaw`
+    SELECT
+    p.id,
+    p.name,
+    p.image_url,
+    p.price_before,
+    p.price_after,
+    p.created_at
+    FROM products as p
+    ORDER BY created_at desc;
     `
 }
 
@@ -113,6 +127,7 @@ module.exports = {
     getonesubBestsell,
     gettwosubBestsell,
     getallbestsell,
+    getallnewsell,
     getdetailColors,
     getdetailSizes,
     getdetailCompositions,
