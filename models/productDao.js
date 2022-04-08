@@ -35,7 +35,7 @@ const getAlllist = async () => {
 
 const getonesubBestsell = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE one_sub_category_id = ${id}
     ORDER BY sell_amount DESC;
@@ -44,7 +44,7 @@ const getonesubBestsell = async (id) => {
 
 const gettwosubBestsell = async (id) => {
     return await prisma.$queryRaw`
-    SELECT name, image_url, price_after
+    SELECT id, name, image_url, price_after
     FROM products 
     WHERE two_sub_category_id = ${id}
     ORDER BY sell_amount DESC;

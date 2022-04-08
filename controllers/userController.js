@@ -1,3 +1,4 @@
+
 const req = require('express/lib/request');
 const userService = require('../services/userService') 
 require('dotenv').config(); 
@@ -118,5 +119,4 @@ module.exports = {
     getAll,
     signUp,
     signIn
-
 };
