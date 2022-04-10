@@ -8,6 +8,7 @@ const productController = require("../controllers/productController");
 router.get('/onesublist/:id', productController.onesublist)
 router.get('/twosublist/:id', productController.twosublist)
 router.get('/alllist', productController.allList)
+router.get('/allnewsell', productController.allnewsell)
 
 
 // == Best ==

@@ -1,3 +1,4 @@
+
 const req = require('express/lib/request');
 const userService = require('../services/userService') 
 require('dotenv').config(); 
@@ -86,7 +87,7 @@ const signUp = async (req, res) => {
 
         await userService.signUp(username,email,password);
 
-        res.status(201).json({message: 'SIGNUP_SUCESS'});
+        res.status(201).json({message: 'SIGNUP_SUCCESS'});
 
     }   catch (err){
         console.log(err);
@@ -96,6 +97,8 @@ const signUp = async (req, res) => {
 };
 
 const signIn = async(req,res)=> {
+    console.log(1)
+
     try{
         const {email, password} = req.body;
         
@@ -116,5 +119,4 @@ module.exports = {
     getAll,
     signUp,
     signIn
-
 };

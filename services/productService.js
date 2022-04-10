@@ -14,6 +14,10 @@ const getAlllist = async () => {
     return await productDao.getAlllist()
 }
 
+const getallnewsell = async () => {
+    return await productDao.getallnewsell();
+}
+
 
 // == Best ==
 
@@ -57,6 +61,7 @@ module.exports = {
     getonesubBestsell,
     gettwosubBestsell,
     getallbestsell,
+    getallnewsell,
     getdetailColors,
     getdetailSizes,
     getdetailCompositions,

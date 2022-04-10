@@ -35,6 +35,15 @@ const allList = async (req, res) => {
     }
 }
 
+const allnewsell = async (req, res) => {
+    try {
+        const allnewsell = await productService.getallnewsell()
+        return res.status(200).json(allnewsell)
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
 
 // == Best ==
 
@@ -122,6 +131,7 @@ module.exports = {
     onesubBestsell,
     twosubBestsell,
     allbestsell,
+    allnewsell,
     detailColors,
     detailSizes,
     detailCompositions,

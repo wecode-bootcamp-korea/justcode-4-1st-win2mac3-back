@@ -1,3 +1,4 @@
+
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -9,6 +10,7 @@ const getUserByEmail = async (email) => {
 }	
 
 const getUserByUsername= async (username) => {
+
 	return await prisma.$queryRaw`
 		SELECT id FROM users WHERE username = ${username};
 	`

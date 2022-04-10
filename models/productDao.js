@@ -24,7 +24,7 @@ const getTwosublist = async (id) => {
 
 const getAlllist = async () => {
     return await prisma.$queryRaw`
-    SELECT id, name, image_url, price_after 
+    SELECT id, name, image_url, price_after, price_before
     FROM products;
     `
 }
@@ -56,6 +56,20 @@ const getallbestsell = async () => {
     SELECT id, name, image_url, price_after, price_before 
     FROM products 
     ORDER BY sell_amount desc;
+    `
+}
+
+const getallnewsell = async () => {
+    return await prisma.$queryRaw`
+    SELECT
+    p.id,
+    p.name,
+    p.image_url,
+    p.price_before,
+    p.price_after,
+    p.created_at
+    FROM products as p
+    ORDER BY created_at desc;
     `
 }
 
@@ -113,6 +127,7 @@ module.exports = {
     getonesubBestsell,
     gettwosubBestsell,
     getallbestsell,
+    getallnewsell,
     getdetailColors,
     getdetailSizes,
     getdetailCompositions,
