@@ -1,8 +1,6 @@
 const { request } = require('express');
 const cartService = require("../services/cartService");
 
-
-
 // // == Cart ==
 
 const cartwrite = async (req, res) => {
@@ -21,9 +19,7 @@ const cartwrite = async (req, res) => {
 const cartread = async (req, res) => {
     try {
         const id = req.params.id;
-        console.log(id)
         const cartread = await cartService.getCartread(id)
-        console.log(cartread)
         return res.status(200).json(cartread)
     } catch (err) {
         console.log(err)
@@ -43,8 +39,34 @@ const cartdelete = async (req, res) => {
     }
 }
 
+const quantityminus = async (req, res) => {
+    try {
+        const {id, quantity} = req.body
+        console.log(req.body)
+        const quantityminus = await cartService.quantityminus(id, quantity)
+        return res.status(200).json("MINUS!")
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
+
+const quantityplus = async (req, res) => {
+    try {
+        const {id, quantity} = req.body
+        console.log(req.body)
+        const quantityplus = await cartService.quantityplus(id, quantity)
+        return res.status(200).json("PLUS!")
+    } catch (err) {
+        console.log(err)
+        return res.status(err.status || 500).json({ message: err.message })
+    }
+}
+
 module.exports = {
     cartwrite,
     cartread,
-    cartdelete
+    cartdelete,
+    quantityminus,
+    quantityplus
 }

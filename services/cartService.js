@@ -10,7 +10,6 @@ const postCartwrite = async (user_id, color_id, composition_id, product_id, quan
 }
 
 const getCartread = async (id) => {
-    console.log(2)
     return await cartDao.getCartread(id)
 }
 
@@ -18,9 +17,18 @@ const getCartdelete = async (id) => {
     return await cartDao.getCartdelete(id)
 }
 
+const quantityminus = async (id, quantity) => {
+    return await cartDao.quantityminus(id, quantity)
+}
+
+const quantityplus = async (id, quantity) => {
+    return await cartDao.quantityplus(id, quantity)
+}
 
 module.exports = {
     postCartwrite,
     getCartread,
-    getCartdelete
+    getCartdelete,
+    quantityminus,
+    quantityplus
 };
