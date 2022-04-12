@@ -21,7 +21,7 @@
 상품의 다양한 옵션과 카테고리들을 어떻게 다루게 될지, 어떤 식으로 데이터가 이동하는지를 탐구하기 위해 이 사이트를 선정했습니다.
 
 # 데모 화면
-데모 시연 화면 [https://www.youtube.com/watch?v=TkbnRMxwWDI]
+데모 시연 화면 : https://www.youtube.com/watch?v=TkbnRMxwWDI
 
 # 적용 기술 및 구현 기능
 ### 적용 기술 
