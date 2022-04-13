@@ -1,6 +1,6 @@
-const { request } = require('express');
 const cartService = require('../services/cartService');
-const validateToken = require('../middlewares/validateToken')
+const jwt = require('jsonwebtoken');
+const YOUR_SECRET_KET = process.env.SECRET_KEY;
 
 // // == Cart ==
 
@@ -11,7 +11,7 @@ const createCartItem = async (req, res) => {
             
         for (i in req.body) {
             const { color_id, composition_id, product_id, quantity, size_id, price } = req.body[i]
-            const cartwrite = await cartService.postCartwrite(decoded.userId, color_id, composition_id, product_id, quantity, size_id, price);
+            const createCartItem = await cartService.createCartItem(decoded.userId, color_id, composition_id, product_id, quantity, size_id, price);
         }
         return res.status(201).json("message : CREATE SUCCESS")
     } catch (err) {
@@ -24,7 +24,7 @@ const getCart = async (req, res) => {
     try {
         const id = req.params.id;
         const getCart = await cartService.getCart(id)
-        return res.status(200).json("message : GET SUCCESS")
+        return res.status(200).json(getCart)
     } catch (err) {
         console.log(err)
         return res.status(err.status || 500).json({ message: err.message })
@@ -46,7 +46,6 @@ const deleteCartItem = async (req, res) => {
 const updateCartQuantity = async (req, res) => {
     try {
         const {id, quantity} = req.body
-        console.log(req.body)
         const updateCartQuantity = await cartService.updateCartQuantity(id, quantity)
         return res.status(200).json("message : UPDATE SUCCESS")
     } catch (err) {
