@@ -2,37 +2,37 @@ const productDao = require("../models/productDao");
 
 // == List ==
 
-const getOnesublist = async (id) => {
-    return await productDao.getOnesublist(id)
+const getOneSubList = async (id) => {
+    return await productDao.getSubList(id, 0)
 }
 
-const getTwosublist = async (id) => {
-    return await productDao.getTwosublist(id)
+const getTwoSubList = async (id) => {
+    return await productDao.getSubList(0, id)
 }
 
-const getAlllist = async () => {
-    return await productDao.getAlllist()
+const getAllList = async () => {
+    return await productDao.getAllList()
 }
 
-const getallnewsell = async () => {
-    return await productDao.getallnewsell();
+const getAllNewList = async () => {
+    return await productDao.getAllNewList();
 }
 
 
 // == Best ==
 
-const getonesubBestsell = async (id) => {
-    return await productDao.getonesubBestsell(id)
+const getOneSubBest = async (id) => {
+    return await productDao.getSubBest(id, 0)
 }
 
 
-const gettwosubBestsell = async (id) => {
-    return await productDao.gettwosubBestsell(id)
+const getTwoSubBest = async (id) => {
+    return await productDao.getSubBest(0, id)
 }
 
 
-const getallbestsell = async () => {
-    return await productDao.getallbestsell()
+const getAllBestList = async () => {
+    return await productDao.getAllBestList()
 }
 
 
@@ -55,13 +55,13 @@ const getdetailCompositions = async () => {
 }
 
 module.exports = {
-    getAlllist,
-    getOnesublist,
-    getTwosublist,
-    getonesubBestsell,
-    gettwosubBestsell,
-    getallbestsell,
-    getallnewsell,
+    getAllList,
+    getOneSubList,
+    getTwoSubList,
+    getOneSubBest,
+    getTwoSubBest,
+    getAllBestList,
+    getAllNewList,
     getdetailColors,
     getdetailSizes,
     getdetailCompositions,
