@@ -1,5 +1,4 @@
 const { PrismaClient } = require("@prisma/client");
-
 const prisma = new PrismaClient();
 
 
@@ -80,6 +79,7 @@ const getDetail = async (id) => {
     SELECT
     p.id 
     , p.name
+    , p.description
     , p.image_url
     , p.price_after
     , p.price_before
@@ -100,6 +100,7 @@ WHERE p.id =${id};
 }
 
 const getdetailColors = async () => {
+    console.log(1)
     return await prisma.$queryRaw`
     SELECT id, name, value 
     FROM colors;

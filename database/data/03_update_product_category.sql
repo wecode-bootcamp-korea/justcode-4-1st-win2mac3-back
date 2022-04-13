@@ -76,4 +76,5 @@ WHERE
     id= 8
 ;
 
+-- UPDATE products SET sell_amount = 1 WHERE id= 8
 
