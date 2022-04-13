@@ -5,23 +5,16 @@ const prisma = new PrismaClient();
 // == List ==
 
 
-const getOnesublist = async (id) => {
+const getSubList = async (oneid, twoid) => {
     return await prisma.$queryRaw`
     SELECT id, name, image_url, price_after
     FROM products 
-    WHERE one_sub_category_id = ${id};
+    WHERE one_sub_category_id = ${oneid} or two_sub_category_id = ${twoid};
     `
 }
 
-const getTwosublist = async (id) => {
-    return await prisma.$queryRaw`
-    SELECT id, name, image_url, price_after
-    FROM products 
-    WHERE two_sub_category_id = ${id};
-    `
-}
 
-const getAlllist = async () => {
+const getAllList = async () => {
     return await prisma.$queryRaw`
     SELECT id, name, image_url, price_after, price_before
     FROM products;
@@ -32,25 +25,16 @@ const getAlllist = async () => {
 // == Best ==
 
 
-const getonesubBestsell = async (id) => {
+const getSubBest = async (oneid, twoid) => {
     return await prisma.$queryRaw`
     SELECT id, name, image_url, price_after
     FROM products 
-    WHERE one_sub_category_id = ${id}
+    WHERE one_sub_category_id = ${oneid} or two_sub_category_id = ${twoid}
     ORDER BY sell_amount DESC;
     `
 }
 
-const gettwosubBestsell = async (id) => {
-    return await prisma.$queryRaw`
-    SELECT id, name, image_url, price_after
-    FROM products 
-    WHERE two_sub_category_id = ${id}
-    ORDER BY sell_amount DESC;
-    `
-}
-
-const getallbestsell = async () => {
+const getAllBestList = async () => {
     return await prisma.$queryRaw`
     SELECT id, name, image_url, price_after, price_before 
     FROM products 
@@ -58,7 +42,7 @@ const getallbestsell = async () => {
     `
 }
 
-const getallnewsell = async () => {
+const getAllNewList = async () => {
     return await prisma.$queryRaw`
     SELECT
     p.id,
@@ -122,13 +106,11 @@ const getdetailCompositions = async () => {
 }
 
 module.exports = {
-    getAlllist,
-    getOnesublist,
-    getTwosublist,
-    getonesubBestsell,
-    gettwosubBestsell,
-    getallbestsell,
-    getallnewsell,
+    getAllList,
+    getSubList,
+    getSubBest,
+    getAllBestList,
+    getAllNewList,
     getdetailColors,
     getdetailSizes,
     getdetailCompositions,
