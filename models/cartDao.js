@@ -5,14 +5,14 @@ const prisma = new PrismaClient();
 
 // == Cart ==
 
-const postCartwrite = async (user_id, color_id, composition_id, product_id, quantity, size_id, price) => {
+const createCartItem = async (user_id, color_id, composition_id, product_id, quantity, size_id, price) => {
     return await prisma.$queryRaw`
     INSERT INTO user_carts (user_id, color_id, composition_id, product_id, quantity, size_id, price) 
     VALUES (${user_id}, ${color_id}, ${composition_id}, ${product_id}, ${quantity}, ${size_id}, ${price});
     `
 }
 
-const getCartread = async (id) => {
+const getCart = async (id) => {
     return await prisma.$queryRaw`
     SELECT u.id, u.price, u.quantity, p.image_url,
     p.name AS product_name,
@@ -32,25 +32,20 @@ const getCartread = async (id) => {
     `
 }
 
-const getCartdelete = async (id) => {
+const deleteCartItem = async (id) => {
     return await prisma.$queryRaw`
     delete from user_carts where id=${id};`
 }
 
-const quantityminus = async (id, quantity) => {
+const updateCartQuantity = async (id, quantity) => {
     return await prisma.$queryRaw`
     UPDATE user_carts SET quantity = ${quantity} WHERE id=${id};`
 }
 
-const quantityplus = async (id, quantity) => {
-    return await prisma.$queryRaw`
-    UPDATE user_carts SET quantity = ${quantity} WHERE id=${id};`
-}
 
 module.exports = {
-    postCartwrite,
-    getCartread,
-    getCartdelete,
-    quantityminus,
-    quantityplus
+    createCartItem,
+    getCart,
+    deleteCartItem,
+    updateCartQuantity
 };

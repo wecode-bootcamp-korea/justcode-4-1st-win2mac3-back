@@ -6,12 +6,11 @@ const cartController = require("../controllers/cartController");
 
 // == Cart == 
 
-router.post('/write', cartController.cartwrite)
-router.get('/read/:id', cartController.cartread)
-router.get('/delete/:id', cartController.cartdelete)
-router.post('/quantityminus', cartController.quantityminus)
-router.post('/quantityplus', cartController.quantityplus)
-// router.post('/cartread', cartController.cartread)
+router.post('', cartController.createCartItem)                      // 장바구니 목록 추가
+router.get('/:id', cartController.getCart)                          // 장바구니 목록 읽어오기
+router.delete('/:id', cartController.deleteCartItem)                // 장바구니 목록 삭제
+router.put('/:id', cartController.updateCartQuantity)               // 장바구니 수량 변경
+
 
 
 module.exports = router
