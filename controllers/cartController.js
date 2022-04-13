@@ -1,13 +1,17 @@
 const { request } = require('express');
-const cartService = require("../services/cartService");
+const cartService = require('../services/cartService');
+const validateToken = require('../middlewares/validateToken')
 
 // // == Cart ==
 
 const createCartItem = async (req, res) => {
     try {
+        const clientToken = req.headers.authorization;
+        const decoded = jwt.verify(clientToken, YOUR_SECRET_KET);
+            
         for (i in req.body) {
-            const { user_id, color_id, composition_id, product_id, quantity, size_id, price } = req.body[i]
-            const createCartItem = await cartService.createCartItem(user_id, color_id, composition_id, product_id, quantity, size_id, price);
+            const { color_id, composition_id, product_id, quantity, size_id, price } = req.body[i]
+            const cartwrite = await cartService.postCartwrite(decoded.userId, color_id, composition_id, product_id, quantity, size_id, price);
         }
         return res.status(201).json("message : CREATE SUCCESS")
     } catch (err) {
