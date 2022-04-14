@@ -84,7 +84,6 @@ WHERE p.id =${id};
 }
 
 const getdetailColors = async () => {
-    console.log(1)
     return await prisma.$queryRaw`
     SELECT id, name, value 
     FROM colors;
