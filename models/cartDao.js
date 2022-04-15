@@ -42,7 +42,6 @@ const updateCartQuantity = async (id, quantity) => {
     UPDATE user_carts SET quantity = ${quantity} WHERE id=${id};`
 }
 
-
 module.exports = {
     createCartItem,
     getCart,
