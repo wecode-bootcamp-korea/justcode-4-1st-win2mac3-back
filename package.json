@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "postinstall": "prisma generate",
-    "distribute": "npm i && prisma generate && pm2 start server.js --name <project-back> -i max"
+    "distribute": "npm i && prisma generate && pm2 start server.js --name justcode-4-1st-win2mac3-back -i max"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,7 @@
     "dotenv": "^16.0.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15",
-    "pm2": "^5.2.0",
+    "pm2": "^5.1.2",
     "prisma": "^3.11.1"
   },
   "dependencies": {
