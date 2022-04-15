@@ -35,6 +35,7 @@ model Product {
   name                String
   price_before        Decimal        @db.Decimal(10, 0)
   price_after         Decimal        @db.Decimal(10, 0)
+  descrition          String?
   image_url           String
   one_sub_category_id Int
   two_sub_category_id Int

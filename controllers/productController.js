@@ -2,10 +2,10 @@ const productService = require("../services/productService");
 
 // == List ==
 
-const onesublist = async (req, res) => {
+const getOneSubList = async (req, res) => {
     try {
         const id = req.params.id;
-        const onesublist = await productService.getOnesublist(id)
+        const onesublist = await productService.getOneSubList(id)
         return res.status(200).json(onesublist)
     } catch (err) {
         console.log(err)
@@ -14,10 +14,10 @@ const onesublist = async (req, res) => {
 }
 
 
-const twosublist = async (req, res) => {
+const getTwoSubList = async (req, res) => {
     try {
         const id = req.params.id;
-        const twosublist = await productService.getTwosublist(id)
+        const twosublist = await productService.getTwoSubList(id)
         return res.status(200).json(twosublist)
     } catch (err) {
         console.log(err)
@@ -25,20 +25,20 @@ const twosublist = async (req, res) => {
     }
 }
 
-const allList = async (req, res) => {
+const getAllList = async (req, res) => {
     try {
-        const allList = await productService.getAlllist()
-        return res.status(200).json(allList)
+        const getAllList = await productService.getAllList()
+        return res.status(200).json(getAllList)
     } catch (err) {
         console.log(err)
         return res.status(err.status || 500).json({ message: err.message })
     }
 }
 
-const allnewsell = async (req, res) => {
+const getAllNewList = async (req, res) => {
     try {
-        const allnewsell = await productService.getallnewsell()
-        return res.status(200).json(allnewsell)
+        const getAllNewList = await productService.getAllNewList()
+        return res.status(200).json(getAllNewList)
     } catch (err) {
         console.log(err)
         return res.status(err.status || 500).json({ message: err.message })
@@ -47,22 +47,22 @@ const allnewsell = async (req, res) => {
 
 // == Best ==
 
-const onesubBestsell = async (req, res) => {
+const getOneSubBest = async (req, res) => {
     try {
         const id = req.params.id;
-        const onesubBestsell = await productService.getonesubBestsell(id)
-        return res.status(200).json({ onesubBestsell })
+        const getOneSubBest = await productService.getOneSubBest(id)
+        return res.status(200).json({ getOneSubBest })
     } catch (err) {
         console.log(err)
         return res.status(err.status || 500).json({ message: err.message })
     }
 }
 
-const twosubBestsell = async (req, res) => {
+const getTwoSubBest = async (req, res) => {
     try {
         const id = req.params.id;
-        const twosubBestsell = await productService.gettwosubBestsell(id)
-        return res.status(200).json({ twosubBestsell })
+        const getTwoSubBest = await productService.getTwoSubBest(id)
+        return res.status(200).json({ getTwoSubBest })
     } catch (err) {
         console.log(err)
         return res.status(err.status || 500).json({ message: err.message })
@@ -70,10 +70,10 @@ const twosubBestsell = async (req, res) => {
 }
 
 
-const allbestsell = async (req, res) => {
+const getAllBestList = async (req, res) => {
     try {
-        const allbestsell = await productService.getallbestsell()
-        return res.status(200).json(allbestsell)
+        const getAllBestList = await productService.getAllBestList()
+        return res.status(200).json(getAllBestList)
     } catch (err) {
         console.log(err)
         return res.status(err.status || 500).json({ message: err.message })
@@ -125,13 +125,13 @@ const detailCompositions = async (req, res) => {
 }
 
 module.exports = {
-    allList,
-    onesublist,
-    twosublist,
-    onesubBestsell,
-    twosubBestsell,
-    allbestsell,
-    allnewsell,
+    getAllList,
+    getOneSubList,
+    getTwoSubList,
+    getOneSubBest,
+    getTwoSubBest,
+    getAllBestList,
+    getAllNewList,
     detailColors,
     detailSizes,
     detailCompositions,

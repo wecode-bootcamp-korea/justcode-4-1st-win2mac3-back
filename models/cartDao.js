@@ -1,11 +1,11 @@
 const { PrismaClient } = require("@prisma/client");
-
 const prisma = new PrismaClient();
 
 
 // == Cart ==
 
 const createCartItem = async (user_id, color_id, composition_id, product_id, quantity, size_id, price) => {
+
     return await prisma.$queryRaw`
     INSERT INTO user_carts (user_id, color_id, composition_id, product_id, quantity, size_id, price) 
     VALUES (${user_id}, ${color_id}, ${composition_id}, ${product_id}, ${quantity}, ${size_id}, ${price});
@@ -41,7 +41,6 @@ const updateCartQuantity = async (id, quantity) => {
     return await prisma.$queryRaw`
     UPDATE user_carts SET quantity = ${quantity} WHERE id=${id};`
 }
-
 
 module.exports = {
     createCartItem,

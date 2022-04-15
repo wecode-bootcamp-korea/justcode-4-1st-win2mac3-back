@@ -77,3 +77,13 @@ WHERE
 ;
 
 
+
+UPDATE products SET sell_amount = 10 WHERE id= 1;
+UPDATE products SET sell_amount = 50 WHERE id= 2;
+UPDATE products SET sell_amount = 20 WHERE id= 3;
+UPDATE products SET sell_amount = 100 WHERE id= 4;
+UPDATE products SET sell_amount = 30 WHERE id= 5;
+UPDATE products SET sell_amount = 500 WHERE id= 6;
+UPDATE products SET sell_amount = 200 WHERE id= 7;
+UPDATE products SET sell_amount = 1000 WHERE id= 8;
+

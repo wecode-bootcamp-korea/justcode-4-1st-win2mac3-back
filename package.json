@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "distribute": "npm i && prisma generate && pm2 start server.js --name justcode-4-1st-win2mac3-back -i max"
   },
   "keywords": [],
   "author": "",
@@ -15,12 +16,14 @@
     "dotenv": "^16.0.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15",
+    "pm2": "^5.1.2",
     "prisma": "^3.11.1"
   },
   "dependencies": {
     "@prisma/client": "^3.11.1",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "prettier": "^2.6.2"
   }
 }
