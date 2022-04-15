@@ -19,6 +19,7 @@
 
 데모 화면
 시연 화면 : https://www.youtube.com/watch?v=TkbnRMxwWDI
+
 위코뷰 사이트 : http://54.180.136.5:3000/main
 
 # 적용 기술 및 구현 기능
